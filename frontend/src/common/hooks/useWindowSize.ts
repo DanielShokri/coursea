@@ -19,7 +19,7 @@ export const useWindowSize = (): WindowSize => {
 
   useEffect(() => {
     if (!isClient) {
-      return false;
+      return;
     }
 
     const handleResize = (): void => {

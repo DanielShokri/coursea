@@ -86,6 +86,7 @@ export default function CoursesTitle() {
             <Input
               type="text"
               name={InputNames.text}
+              // @ts-ignore
               errors={errors[InputNames.text]}
               onChange={handleChange}
               value={values.text}

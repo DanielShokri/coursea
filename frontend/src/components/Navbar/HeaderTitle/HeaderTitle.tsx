@@ -12,7 +12,7 @@ const HeaderTitle = ({ inputWidth }: HeaderTitleProps) => {
   const { id } = useParams();
   const currUser = useBoundStore((state) => state.currUser);
 
-  const HeaderTitleRender = ({ title }): JSX.Element => {
+  const HeaderTitleRender = ({ title }: { title: string }): JSX.Element => {
     return (
       <div className="px-4 md:px-8">
         <div className="mb-4 mt-8">

@@ -136,8 +136,10 @@ const LoginPage = () => {
                   type="text"
                   name={InputNames.name}
                   label="Full Name"
+                  // @ts-ignore
                   errors={errors[InputNames.name]}
                   onChange={handleChange}
+                  // @ts-ignore
                   value={values.name}
                 />
               )}
@@ -145,6 +147,7 @@ const LoginPage = () => {
                 // type="email"
                 name={InputNames.email}
                 label="Email"
+                // @ts-ignore
                 errors={errors[InputNames.email]}
                 onChange={handleChange}
                 value={values.email}
@@ -154,6 +157,7 @@ const LoginPage = () => {
                 type="password"
                 name={InputNames.password}
                 label="Password"
+                // @ts-ignore
                 errors={errors[InputNames.password]}
                 onChange={handleChange}
                 value={values.password}

@@ -15,7 +15,7 @@ export default function EditProfile() {
         <span>Upload Photo</span>
       </div>
       <div className="form flex flex-col gap-8">
-        <Input
+        {/* <Input
           type="text"
           name={InputNames.name}
           label="Full Name"
@@ -38,7 +38,7 @@ export default function EditProfile() {
           // errors={errors[InputNames.name]}
           // onChange={handleChange}
           // value={values.name}
-        />
+        /> */}
       </div>
       <Button
         title="Save Changes"
