@@ -13,7 +13,10 @@ import LoadingState from "./common/LoadingState/LoadingState";
 
 const token = localStorage.getItem?.("token");
 const client = new ApolloClient({
-  uri: "http://localhost:8000/graphql",
+  uri:
+    import.meta.env.mode === "production"
+      ? "https://coursea-production.up.railway.app/"
+      : "http://localhost:8000/graphql",
   cache: new InMemoryCache(),
   credentials: "include",
   headers: {
