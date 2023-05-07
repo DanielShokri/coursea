@@ -24,12 +24,13 @@ const startServer = async () => {
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
   await server.start();
+
   app.use(
     '/',
     cors<cors.CorsRequest>({
-      origin: 'http://localhost:5173',
-      // origin:
-      //   process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:5173' : '',
+      origin: process.env.GRAPHQL_URL
+        ? process.env.GRAPHQL_URL
+        : 'http://127.0.0.1:5173',
       credentials: true,
     }),
     bodyParser.json({ limit: '50mb' }),
