@@ -28,9 +28,10 @@ const startServer = async () => {
   app.use(
     '/',
     cors<cors.CorsRequest>({
-      origin: process.env.GRAPHQL_URL
-        ? process.env.GRAPHQL_URL
-        : 'http://127.0.0.1:5173',
+      origin: 'https://coursea.up.railway.app/',
+      // origin: process.env.GRAPHQL_URL
+      //   ? process.env.GRAPHQL_URL
+      //   : 'http://127.0.0.1:5173',
       credentials: true,
     }),
     bodyParser.json({ limit: '50mb' }),
