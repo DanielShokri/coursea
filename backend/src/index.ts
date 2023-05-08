@@ -8,11 +8,9 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import jwt, { Secret } from 'jsonwebtoken';
 import { getUserFromToken } from './Utils/getUserFromToken';
 
 const app = express();
-// app.use(morgan('dev'));
 
 const startServer = async () => {
   const httpServer = http.createServer(app);
