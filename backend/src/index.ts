@@ -26,7 +26,7 @@ const startServer = async () => {
   app.use(
     '/',
     cors<cors.CorsRequest>({
-      origin: 'https://coursea.up.railway.app/',
+      origin: 'https://coursea.vercel.app/',
       // origin: process.env.GRAPHQL_URL
       //   ? process.env.GRAPHQL_URL
       //   : 'http://127.0.0.1:5173',
