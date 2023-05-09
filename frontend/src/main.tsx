@@ -16,7 +16,7 @@ const token = localStorage.getItem?.("token");
 const client = new ApolloClient({
   uri:
     import.meta.env.MODE === "production"
-      ? "https://coursea-production.up.railway.app/"
+      ? "https://coursea-production.up.railway.app/graphql"
       : "http://localhost:8000/graphql",
   cache: new InMemoryCache(),
   credentials: "include",
