@@ -7,10 +7,11 @@ services:
     restart: always
     ports:
       - 5432:5432
+      - 7192:7192
     environment:
       POSTGRES_DB: webapp_dev
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      PGUSER: postgres
+      PGPASSWORD: dAOnHhcKWz6OAM85BObh
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -27,7 +28,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/webapp_dev?schema=public
+      DATABASE_URL: postgresql://postgres:dAOnHhcKWz6OAM85BObh@containers-us-west-149.railway.app:7192/railway
       PORT: 8000
 
 volumes:
