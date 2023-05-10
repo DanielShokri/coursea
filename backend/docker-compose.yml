@@ -6,12 +6,11 @@ services:
     container_name: postgres
     restart: always
     ports:
-      - 5432:5432
-      - 7192:7192
+      - ${PGPORT}:${PGPORT}
     environment:
-      POSTGRES_DB: webapp_dev
-      PGUSER: postgres
-      PGPASSWORD: dAOnHhcKWz6OAM85BObh
+      PGDATABASE: ${PGDATABASE}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -28,7 +27,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgresql://postgres:dAOnHhcKWz6OAM85BObh@containers-us-west-149.railway.app:7192/railway
+      DATABASE_URL: ${DATABASE_URL}
       PORT: 8000
 
 volumes:
