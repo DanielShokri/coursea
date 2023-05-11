@@ -8,10 +8,10 @@ RUN npm install
 
 COPY prisma/schema.prisma ./prisma/
 RUN npx prisma generate
+RUN npm run migrate
 
 COPY . .
 
-RUN npm run migrate:prod
 RUN npm run build
 
 EXPOSE 8080
