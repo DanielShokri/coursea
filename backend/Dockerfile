@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm install
-ENV DATABASE_URL=$DATABASE_URL
+ENV DATABASE_URL=postgresql://postgres:dAOnHhcKWz6OAM85BObh@containers-us-west-149.railway.app:7192/railway
 
 COPY prisma/schema.prisma ./prisma/
 RUN npx prisma generate
