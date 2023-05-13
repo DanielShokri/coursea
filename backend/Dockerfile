@@ -1,10 +1,12 @@
-FROM node:17.3
+FROM node:lts
 
 WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm install
-ENV DATABASE_URL=${DATABASE_URL}
+
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
 
 COPY prisma/schema.prisma ./prisma/
 RUN npx prisma generate
