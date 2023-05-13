@@ -8,7 +8,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://i.ibb.co/xMLyhLh/image.png" alt="project-screenshot" width="560" height="560/">
+<img src="https://i.ibb.co/xMLyhLh/image.png" alt="project-screenshot" width="1200" height="700/">
   
   
 <h2>💻 Built with</h2>
