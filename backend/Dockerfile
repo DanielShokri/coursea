@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm install
-
+ENV DATABASE_URL=$DATABASE_URL
 
 COPY prisma/schema.prisma ./prisma/
 RUN npx prisma generate
