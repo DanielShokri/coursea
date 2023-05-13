@@ -9,6 +9,7 @@ import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { getUserFromToken } from './Utils/getUserFromToken';
+console.log('ggg');
 
 const app = express();
 
