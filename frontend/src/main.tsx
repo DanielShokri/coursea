@@ -12,6 +12,7 @@ import "./index.css";
 import LoadingState from "./common/LoadingState/LoadingState";
 
 const token = localStorage.getItem?.("token");
+console.log("s");
 
 const client = new ApolloClient({
   uri:
