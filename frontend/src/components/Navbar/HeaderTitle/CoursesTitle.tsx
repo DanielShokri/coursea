@@ -1,5 +1,5 @@
 import { SearchIcon } from "@heroicons/react/outline";
-import BtnMenu from "../../../common/BtnMenu/BtnMenu";
+import PopoverMenu from "../../../common/BtnMenu/PopoverMenu";
 import Button from "../../../common/Button/Button";
 import { levels, sortBy } from "../../../common/constants/constants";
 import { InputNames } from "../../../common/interfaces/commonInterfaces";
@@ -11,6 +11,11 @@ import { GET_SEARCHED_COURSES } from "../../../Queries/queries";
 import { useBoundStore } from "../../../store/store";
 import { displayToast } from "../../../common/Notfications/Notfications";
 import { hasValues } from "../../../common/constants/utils";
+import {
+  PopoverHandler,
+  PopoverContent,
+  Popover,
+} from "@material-tailwind/react";
 
 const searchQuery = {
   text: "",
@@ -104,29 +109,46 @@ export default function CoursesTitle() {
           </form>
         </div>
         <div className="flex gap-4 self-center">
-          <BtnMenu
-            menuHandler={handleFilterChange}
-            menu={levels}
-            customOuterClass="-left-10"
-          >
-            <Button
-              title={`Level : ${values.filter.level}`}
-              twClassName="border-neutral-grey border"
-              icon={<img src="/icons/range.svg" alt="range" className="mr-2" />}
-            />
-          </BtnMenu>
-          <Button title="Category" twClassName="border-neutral-grey border" />
-          <BtnMenu
+          {/* <div>
+            <PopoverMenu
+              menuHandler={handleFilterChange}
+              menu={levels}
+              name="level"
+              // customOuterClass="-left-10"
+            >
+              <Button
+                title={`Level : ${values.filter.level}`}
+                twClassName="border-neutral-grey border min-w-max"
+                icon={
+                  <img src="/icons/range.svg" alt="range" className="mr-2" />
+                }
+              />
+            </PopoverMenu>
+          </div>
+          <Button
+            title="Category"
+            twClassName="border-neutral-grey border min-w-max"
+          />
+          <PopoverMenu
             menuHandler={handleFilterChange}
             menu={sortBy}
-            customOuterClass="-left-10"
+            name="sortBy"
+            customOuterClass=""
           >
             <Button
               icon={<img src="/icons/sort.svg" alt="sort" className="mr-2" />}
               title={`Sort By : ${values.filter.sortBy}`}
-              twClassName="border-neutral-grey border"
+              twClassName="border-neutral-grey border min-w-max"
             />
-          </BtnMenu>
+          </PopoverMenu> */}
+          <Popover placement="bottom">
+            <PopoverHandler>
+              <Button title="==="></Button>
+            </PopoverHandler>
+            <PopoverContent>
+              This is a very beautiful popover, show some love.
+            </PopoverContent>
+          </Popover>
           {hasValues(values) && (
             <Button
               title="Clear Filters"
