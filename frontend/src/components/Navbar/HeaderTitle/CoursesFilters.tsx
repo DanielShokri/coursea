@@ -121,7 +121,6 @@ export default function CoursesFilters({}) {
           menuHandler={handleFilterChange}
           menu={sortBy}
           name="sortBy"
-          customOuterClass=""
         >
           <Button
             variant="outlined"
