@@ -26,8 +26,10 @@ const startServer = async () => {
   app.use(
     '/',
     cors<cors.CorsRequest>({
-      // origin: 'https://coursea.vercel.app',
-      origin: 'http://127.0.0.1:5173',
+      origin:
+        process.env.NODE_ENV === 'production'
+          ? 'https://coursea.vercel.app'
+          : 'http://localhost:5173',
       credentials: true,
     }),
     bodyParser.json({ limit: '50mb' }),

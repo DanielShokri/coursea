@@ -7,9 +7,9 @@ import {
   ApolloProvider,
   gql,
 } from "@apollo/client";
-import "./index.css";
-
+import { ThemeProvider } from "@material-tailwind/react";
 import LoadingState from "./common/LoadingState/LoadingState";
+import "./index.css";
 
 const token = localStorage.getItem?.("token");
 
@@ -29,7 +29,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Suspense fallback={<LoadingState />}>
       <ApolloProvider client={client}>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </ApolloProvider>
     </Suspense>
   </React.StrictMode>

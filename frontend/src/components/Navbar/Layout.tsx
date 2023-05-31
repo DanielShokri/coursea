@@ -17,7 +17,8 @@ import { classNames, userNavigation } from "./navbar.utils";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
 import { useBoundStore } from "../../store/store";
-import BtnMenu from "../../common/BtnMenu/BtnMenu";
+import CommonPopover from "../../common/BtnMenu/CommonPopover";
+import { Avatar, Button } from "@material-tailwind/react";
 
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -61,15 +62,14 @@ export default function Layout() {
                     Login
                   </Link>
                 ) : (
-                  <BtnMenu menu={userNavigation}>
-                    {" "}
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="h-9 w-9 rounded-full"
+                  <CommonPopover menu={userNavigation}>
+                    <Avatar
+                      size="sm"
+                      className="cursor-pointer "
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
+                      alt="avatar"
                     />
-                  </BtnMenu>
+                  </CommonPopover>
                 )}
               </div>
             </div>
