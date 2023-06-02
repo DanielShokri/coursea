@@ -8,7 +8,7 @@ interface ButtonProps {
   outerTwClassnames?: string;
 }
 
-function Button(props: ButtonProps) {
+function CommonButton(props: ButtonProps) {
   const {
     title,
     type,
@@ -23,7 +23,7 @@ function Button(props: ButtonProps) {
       {loading ? (
         <div>
           <div className="flex items-center justify-center">
-            <span className="w-full flex justify-center py-3 px-4  rounded-md shadow-sm text-sm font-medium bg-primary hover:bg-primaryHover">
+            <span className="w-full flex justify-center py-3 px-4 rounded-md shadow-sm text-sm font-medium bg-primary hover:bg-primaryHover">
               <svg
                 className="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,19 +49,17 @@ function Button(props: ButtonProps) {
           </div>
         </div>
       ) : (
-        <span>
-          <button
-            type="submit"
-            onClick={onClick}
-            className={`w-full flex items-center justify-center py-3 px-4  rounded-md shadow-sm text-sm font-medium ${twClassName} `}
-          >
-            {icon && icon}
-            {title}
-          </button>
-        </span>
+        <button
+          type="submit"
+          onClick={onClick}
+          className={`w-full flex relative items-center justify-center py-3 px-4 rounded-lg shadow-sm text-sm font-medium ${twClassName} `}
+        >
+          {icon && icon}
+          {title}
+        </button>
       )}
     </div>
   );
 }
 
-export default Button;
+export default CommonButton;

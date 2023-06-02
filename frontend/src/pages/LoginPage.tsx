@@ -4,7 +4,7 @@ import { REGISTER_USER, USER_LOGIN } from "../Queries/mutations";
 import { UserLogin, UserRegister } from "../common/validators/validator";
 import { InputNames, RoutePaths } from "../common/interfaces/commonInterfaces";
 import { Link } from "react-router-dom";
-import Button from "../common/Button/Button";
+import CommonButton from "../common/Button/Button";
 import useForm from "../common/hooks/useForm";
 import Input from "../common/Input/Input";
 import LoginFooter from "../components/LoginFooter";
@@ -193,7 +193,7 @@ const LoginPage = () => {
                 </>
               )}
               <div>
-                <Button
+                <CommonButton
                   title={isSignUpPage ? "Sign up" : "Sign in"}
                   loading={isSignUpPage ? loading : loginLoading}
                   twClassName="bg-primary hover:bg-primaryHover"

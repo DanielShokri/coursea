@@ -4,7 +4,7 @@ import {
   BellIcon,
   DesktopComputerIcon,
 } from "@heroicons/react/outline";
-import Button from "../common/Button/Button";
+import CommonButton from "../common/Button/Button";
 import EditProfile from "../components/UserProfile/EditProfile";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { RoutePaths } from "../common/interfaces/commonInterfaces";
@@ -112,7 +112,11 @@ export default function UserProfile() {
               Account Setting
             </div>
           </NavLink>
-          <Button title="Logout" twClassName="border" onClick={handleLogout} />
+          <CommonButton
+            title="Logout"
+            twClassName="border"
+            onClick={handleLogout}
+          />
         </div>
       </div>
       {profileTabRenderer(locationName)}

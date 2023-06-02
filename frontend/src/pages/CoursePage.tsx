@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/outline";
 import LevelTag from "../common/Cards/LevelTag";
 import { RoutePaths } from "../common/interfaces/commonInterfaces";
-import Button from "../common/Button/Button";
+import CommonButton from "../common/Button/Button";
 import LoadingState from "../common/LoadingState/LoadingState";
 import { COURSE_ENROLLMENT } from "../Queries/mutations";
 import { displayToast } from "../common/Notfications/Notfications";
@@ -106,7 +106,7 @@ export default function CoursePage() {
             <span>0/5</span>
           </div>
           <div></div>
-          <Button
+          <CommonButton
             onClick={() => courseEnrollmentHandler(course.id)}
             title="Enroll course"
             twClassName="bg-primary hover:bg-primaryHover text-lg mt-6"

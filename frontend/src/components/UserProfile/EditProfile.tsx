@@ -1,4 +1,4 @@
-import Button from "../../common/Button/Button";
+import CommonButton from "../../common/Button/Button";
 import Input from "../../common/Input/Input";
 import { InputNames } from "../../common/interfaces/commonInterfaces";
 
@@ -40,7 +40,7 @@ export default function EditProfile() {
           // value={values.name}
         /> */}
       </div>
-      <Button
+      <CommonButton
         title="Save Changes"
         twClassName="bg-primary hover:bg-primaryHover mt-8 w-[150px] font-urban-medium"
       />
