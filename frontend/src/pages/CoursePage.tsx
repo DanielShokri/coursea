@@ -13,6 +13,13 @@ import CommonButton from "../common/Button/Button";
 import LoadingState from "../common/LoadingState/LoadingState";
 import { COURSE_ENROLLMENT } from "../Queries/mutations";
 import { displayToast } from "../common/Notfications/Notfications";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
 
 export default function CoursePage() {
   const { id } = useParams();
@@ -44,6 +51,24 @@ export default function CoursePage() {
     courseEnrollment({ variables: { createCourseEnrollmentId: courseId } });
   };
   console.log("data", course);
+
+  const data = [
+    {
+      label: "Description",
+      value: "description",
+      desc: course.description,
+    },
+    {
+      label: "Tools",
+      value: "tools",
+      desc: course?.tools,
+    },
+    {
+      label: "Reviews",
+      value: "reviews",
+      desc: course?.reviews,
+    },
+  ];
 
   return (
     <>
@@ -81,13 +106,27 @@ export default function CoursePage() {
                 </div>
               </section>
               <section className="more-info mt-9">
-                <span className="font-urban-bold text-2xl">Description</span>
-                <div>{course?.description}</div>
+                <Tabs value="description">
+                  <TabsHeader>
+                    {data.map(({ label, value }) => (
+                      <Tab key={value} value={value}>
+                        {label}
+                      </Tab>
+                    ))}
+                  </TabsHeader>
+                  <TabsBody>
+                    {data.map(({ value, desc }) => (
+                      <TabPanel key={value} value={value}>
+                        {desc}
+                      </TabPanel>
+                    ))}
+                  </TabsBody>
+                </Tabs>
               </section>
             </div>
           </div>
         </div>
-        <div className="curriculum-info p-8 sm:p-0">
+        <div className="curriculum-infos sm:w-auto w-full p-8 sm:p-0">
           <span className="font-urban-bold text-2xl">{course?.title}</span>
           <div className="flex mt-4 gap-2 justify-between">
             <span className="flex gap-1">

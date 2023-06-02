@@ -127,6 +127,7 @@ export const courseResolvers = {
     { id: courseId }: any,
     { userInfo: currentUser }: any
   ) => {
+    console.log('🚀 ~ file: course.ts:130 ~ currentUser:', currentUser);
     const enrollId = genId();
     // Checking if the user is logged in
     if (!currentUser) {
