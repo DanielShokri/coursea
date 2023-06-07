@@ -33,13 +33,17 @@ model Course {
   instructorId      String
   imageUrl          String
   courseEnrollments CourseEnrollment[]
-  price             Float
+  price             Int                @default(0)
   level             String             @default("Beginner")
-  rating            Float?
+  rating            Int?               @default(0)
   numRatings        Int?
   createdAt         DateTime           @default(now())
   updatedAt         DateTime           @updatedAt
-  Review            Review[]
+  reviews           Review[]
+  Tags              Tags?              @relation(fields: [tagsId], references: [id])
+  tagsId            String?
+  tools             String[]           @default([])
+  modules           Modules[]          @relation(fields: [modulesId], references: [id])
 
   @@map("courses")
 }
@@ -55,6 +59,14 @@ model CourseEnrollment {
   @@map("course_enrollments")
 }
 
+model Modules {
+  id       String @id
+  title    String
+  courseId String
+
+  @@map("modules")
+}
+
 model Review {
   id         String   @id
   reviewer   User     @relation(fields: [reviewerId], references: [id])
@@ -66,6 +78,14 @@ model Review {
   createdAt  DateTime @default(now())
 
   @@map("reviews")
+}
+
+model Tags {
+  id      String   @id
+  name    String   @unique
+  courses Course[]
+
+  @@map("tags")
 }
 
 enum Role {

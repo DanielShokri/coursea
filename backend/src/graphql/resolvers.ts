@@ -57,6 +57,11 @@ const resolvers = {
               user: true,
             },
           },
+          reviews: {
+            include: {
+              reviewer: true,
+            },
+          },
         },
       });
       if (!course)

@@ -40,6 +40,16 @@ export const GET_COURSE = gql`
       courseEnrollments {
         userId
       }
+      reviews {
+        comment
+        id
+        createdAt
+        rating
+        reviewer {
+          name
+          id
+        }
+      }
     }
   }
 `;

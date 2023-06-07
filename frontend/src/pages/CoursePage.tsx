@@ -19,7 +19,10 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  Avatar,
+  Rating,
 } from "@material-tailwind/react";
+import Reviews from "../components/Reviews/Reviews";
 
 export default function CoursePage() {
   const { id } = useParams();
@@ -52,21 +55,52 @@ export default function CoursePage() {
   };
   console.log("data", course);
 
+  const TabsRenderer = ({ data }: { data: any[] }) => {
+    return (
+      <Tabs value="description">
+        <TabsHeader
+          className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
+          indicatorProps={{
+            className:
+              "bg-transparent border-b-2 border-primary shadow-none rounded-none",
+          }}
+        >
+          {data.map(({ label, value }) => (
+            <Tab className="w-28" key={value} value={value}>
+              {label}
+            </Tab>
+          ))}
+        </TabsHeader>
+        <TabsBody>
+          {data.map(({ value, data }) => (
+            <TabPanel key={value} value={value}>
+              {value === "reviews" ? (
+                <Reviews reviews={data} />
+              ) : (
+                <p className="text-neutral-darkGrey">{data}</p>
+              )}
+            </TabPanel>
+          ))}
+        </TabsBody>
+      </Tabs>
+    );
+  };
+
   const data = [
     {
       label: "Description",
       value: "description",
-      desc: course.description,
+      data: course.description,
     },
     {
       label: "Tools",
       value: "tools",
-      desc: course?.tools,
+      data: course?.tools,
     },
     {
       label: "Reviews",
       value: "reviews",
-      desc: course?.reviews,
+      data: course?.reviews,
     },
   ];
 
@@ -84,12 +118,20 @@ export default function CoursePage() {
             <div className="general-info p-8">
               <span className="font-urban-bold text-4xl">{course?.title}</span>
               <section className="course-details mt-5">
-                <span>{course?.instructor?.name}</span>
-                <span className="text-neutral-darkGrey ml-2">
-                  | Web development, backend
-                </span>
-                <span className="text-neutral-darkGrey ml-2">
-                  | Rating 4.5/5.0
+                <span className="flex align-baseline  items-center gap-1">
+                  <Avatar
+                    size="sm"
+                    className="cursor-pointer"
+                    src="https://api.dicebear.com/6.x/adventurer/svg"
+                    alt="avatar"
+                  />
+                  <span>{course?.instructor?.name}</span>|
+                  <span className="text-neutral-darkGrey ml-2">
+                    Web development, backend
+                  </span>
+                  <span className="text-neutral-darkGrey ml-auto">
+                    <Rating value={4} readonly /> 4.5 ({course?.reviews.length})
+                  </span>
                 </span>
                 <div className="flex mt-4 gap-2 flex-wrap">
                   <span className="flex gap-1">
@@ -102,26 +144,13 @@ export default function CoursePage() {
                   <span className="flex gap-1">
                     <ClockIcon className="h-6 w-6" /> 1h 30m
                   </span>
-                  <LevelTag level={course?.level} />
+                  <div className="ml-auto">
+                    <LevelTag level={course?.level} />
+                  </div>
                 </div>
               </section>
               <section className="more-info mt-9">
-                <Tabs value="description">
-                  <TabsHeader>
-                    {data.map(({ label, value }) => (
-                      <Tab key={value} value={value}>
-                        {label}
-                      </Tab>
-                    ))}
-                  </TabsHeader>
-                  <TabsBody>
-                    {data.map(({ value, desc }) => (
-                      <TabPanel key={value} value={value}>
-                        {desc}
-                      </TabPanel>
-                    ))}
-                  </TabsBody>
-                </Tabs>
+                <TabsRenderer data={data} />
               </section>
             </div>
           </div>
