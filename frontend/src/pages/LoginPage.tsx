@@ -8,7 +8,7 @@ import CommonButton from "../common/Button/Button";
 import useForm from "../common/hooks/useForm";
 import Input from "../common/Input/Input";
 import LoginFooter from "../components/LoginFooter";
-import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { displayToast } from "../common/Notfications/Notfications";
 import { useNavigate } from "react-router-dom";
 import { useBoundStore } from "../store/store";
@@ -204,7 +204,7 @@ const LoginPage = () => {
           </div>
           <Link to={RoutePaths.dashboard}>
             <div className="flex mt-5 items-center">
-              <ArrowNarrowLeftIcon className="h-5 w-5 mr-2" />
+              <ArrowLeftIcon className="h-5 w-5 mr-2" />
               Back
             </div>
           </Link>

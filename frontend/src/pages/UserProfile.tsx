@@ -1,9 +1,9 @@
 import {
-  CogIcon,
+  Cog6ToothIcon,
   UserCircleIcon,
   BellIcon,
-  DesktopComputerIcon,
-} from "@heroicons/react/outline";
+  ComputerDesktopIcon,
+} from "@heroicons/react/24/outline";
 import CommonButton from "../common/Button/Button";
 import EditProfile from "../components/UserProfile/EditProfile";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
@@ -76,7 +76,7 @@ export default function UserProfile() {
             to={RoutePaths.profileCourses}
           >
             <div className="flex rounded-md p-3 ">
-              <DesktopComputerIcon
+              <ComputerDesktopIcon
                 className="h-6 w-6 text-neutral-darkGrey mr-2"
                 aria-hidden="true"
               />
@@ -105,7 +105,7 @@ export default function UserProfile() {
             to={RoutePaths.profileSetting}
           >
             <div className="flex rounded-md p-3 ">
-              <CogIcon
+              <Cog6ToothIcon
                 className="h-6 w-6 text-neutral-darkGrey mr-2"
                 aria-hidden="true"
               />

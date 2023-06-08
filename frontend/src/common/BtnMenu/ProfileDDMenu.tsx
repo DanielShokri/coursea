@@ -4,7 +4,7 @@ import {
   InboxArrowDownIcon,
   UserCircleIcon,
   LifebuoyIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   Menu,
@@ -13,11 +13,15 @@ import {
   MenuList,
   Typography,
 } from "@material-tailwind/react";
-import React from "react";
+import { useBoundStore } from "../../store/store";
+import { NavLink } from "react-router-dom";
+import { RoutePaths } from "../interfaces/commonInterfaces";
 
 export default function ProfileDDMenu() {
+  const logout = useBoundStore((state) => state.logout);
+  const userName = useBoundStore((state) => state.currUser.name);
   return (
-    <Menu>
+    <Menu placement="bottom-end">
       <MenuHandler>
         <Avatar
           variant="circular"
@@ -27,32 +31,45 @@ export default function ProfileDDMenu() {
         />
       </MenuHandler>
       <MenuList>
-        <MenuItem className="flex items-center gap-2">
-          <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
-          <Typography variant="small" className="font-normal">
-            My Profile
-          </Typography>
-        </MenuItem>
-        <MenuItem className="flex items-center gap-2">
-          <Cog6ToothIcon strokeWidth={2} className="h-4 w-4" />
-          <Typography variant="small" className="font-normal">
-            Edit Profile
-          </Typography>
-        </MenuItem>
-        <MenuItem className="flex items-center gap-2">
+        <div className="flex items-center p-2">Hi, {userName}</div>
+        <hr className="my-2 border-blue-gray-50" />
+        <NavLink to={RoutePaths.profile}>
+          <MenuItem className="flex items-center gap-2">
+            <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
+            <Typography variant="small" className="font-normal">
+              My Profile
+            </Typography>
+          </MenuItem>
+        </NavLink>
+        <NavLink to={RoutePaths.editProfile}>
+          <MenuItem className="flex items-center gap-2">
+            <Cog6ToothIcon strokeWidth={2} className="h-4 w-4" />
+            <Typography variant="small" className="font-normal">
+              Edit Profile
+            </Typography>
+          </MenuItem>
+        </NavLink>
+        <MenuItem className="flex items-center gap-2" disabled>
           <InboxArrowDownIcon strokeWidth={2} className="h-4 w-4" />
           <Typography variant="small" className="font-normal">
             Inbox
           </Typography>
         </MenuItem>
-        <MenuItem className="flex items-center gap-2">
+        <MenuItem className="flex items-center gap-2" disabled>
           <LifebuoyIcon strokeWidth={2} className="h-4 w-4" />
           <Typography variant="small" className="font-normal">
             Help
           </Typography>
         </MenuItem>
         <hr className="my-2 border-blue-gray-50" />
-        <MenuItem className="flex items-center gap-2 ">
+        <MenuItem
+          className="flex items-center gap-2 "
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            logout?.();
+          }}
+        >
           <PowerIcon strokeWidth={2} className="h-4 w-4" />
           <Typography variant="small" className="font-normal">
             Sign Out

@@ -1,8 +1,8 @@
 import {
   CheckCircleIcon,
-  XIcon,
+  XMarkIcon,
   ExclamationCircleIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 import { toast } from "react-hot-toast";
 
 interface IToast {
@@ -42,7 +42,7 @@ export const displayToast = ({ type, message }: IToast) => {
                   }}
                 >
                   <span className="sr-only">Close</span>
-                  <XIcon className="h-5 w-5" aria-hidden="true" />
+                  <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -80,7 +80,7 @@ export const displayToast = ({ type, message }: IToast) => {
                   }}
                 >
                   <span className="sr-only">Close</span>
-                  <XIcon className="h-5 w-5" aria-hidden="true" />
+                  <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
               </div>
             </div>

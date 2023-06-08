@@ -1,5 +1,5 @@
 import Input from "../../../common/Input/Input";
-import { SearchIcon } from "@heroicons/react/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import CommonPopover from "../../../common/BtnMenu/CommonPopover";
 import { InputNames } from "../../../common/interfaces/commonInterfaces";
 import { hasValues } from "../../../common/constants/utils";
@@ -88,7 +88,7 @@ export default function CoursesFilters({}) {
             icon={
               // @ts-ignore
               <span onClick={handleSubmit}>
-                <SearchIcon
+                <MagnifyingGlassIcon
                   className="h-5 w-5 cursor-pointer"
                   aria-hidden="true"
                 />

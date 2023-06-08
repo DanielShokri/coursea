@@ -1,24 +1,12 @@
-import { Fragment, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import {
-  BellIcon,
-  BookOpenIcon,
-  FolderIcon,
-  HomeIcon,
-  InboxIcon,
-  MenuAlt2Icon,
-  UsersIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import { useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import { Link, Outlet } from "react-router-dom";
 import { RoutePaths } from "../../common/interfaces/commonInterfaces";
-import { classNames, userNavigation } from "./navbar.utils";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
 import { useBoundStore } from "../../store/store";
-import CommonPopover from "../../common/BtnMenu/CommonPopover";
-import { Avatar, Button } from "@material-tailwind/react";
+import ProfileDDMenu from "../../common/BtnMenu/ProfileDDMenu";
 
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -44,7 +32,7 @@ export default function Layout() {
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
-              <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="pr-8 pl-4 flex justify-between items-center">
               <div className="">
@@ -62,14 +50,7 @@ export default function Layout() {
                     Login
                   </Link>
                 ) : (
-                  <CommonPopover menu={userNavigation}>
-                    <Avatar
-                      size="sm"
-                      className="cursor-pointer "
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="avatar"
-                    />
-                  </CommonPopover>
+                  <ProfileDDMenu />
                 )}
               </div>
             </div>

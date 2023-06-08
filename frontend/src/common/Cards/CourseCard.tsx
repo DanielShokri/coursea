@@ -1,5 +1,9 @@
-import { AcademicCapIcon, ClockIcon, UserIcon } from "@heroicons/react/outline";
-import { StarIcon, CurrencyDollarIcon } from "@heroicons/react/solid";
+import {
+  AcademicCapIcon,
+  ClockIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
+import { StarIcon, CurrencyDollarIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import LevelTag from "./LevelTag";
 

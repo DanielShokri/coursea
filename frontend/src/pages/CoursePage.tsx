@@ -6,7 +6,8 @@ import {
   ClockIcon,
   UserIcon,
   ArrowLeftIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/solid";
 import LevelTag from "../common/Cards/LevelTag";
 import { RoutePaths } from "../common/interfaces/commonInterfaces";
 import CommonButton from "../common/Button/Button";
@@ -23,8 +24,14 @@ import {
   Rating,
 } from "@material-tailwind/react";
 import Reviews from "../components/Reviews/Reviews";
+import { useState } from "react";
 
 export default function CoursePage() {
+  const [tabValue, setTabValue] = useState("description");
+  console.log(
+    "🚀 ~ file: CoursePage.tsx:31 ~ CoursePage ~ tabValue:",
+    tabValue
+  );
   const { id } = useParams();
   const {
     data: { course } = {},
@@ -57,7 +64,7 @@ export default function CoursePage() {
 
   const TabsRenderer = ({ data }: { data: any[] }) => {
     return (
-      <Tabs value="description">
+      <Tabs value={tabValue}>
         <TabsHeader
           className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
           indicatorProps={{
@@ -66,7 +73,12 @@ export default function CoursePage() {
           }}
         >
           {data.map(({ label, value }) => (
-            <Tab className="w-28" key={value} value={value}>
+            <Tab
+              onClick={() => setTabValue(value)}
+              className="w-28"
+              key={value}
+              value={value}
+            >
               {label}
             </Tab>
           ))}
@@ -129,8 +141,12 @@ export default function CoursePage() {
                   <span className="text-neutral-darkGrey ml-2">
                     Web development, backend
                   </span>
-                  <span className="text-neutral-darkGrey ml-auto">
-                    <Rating value={4} readonly /> 4.5 ({course?.reviews.length})
+                  <span className="text-neutral-darkGrey ml-auto flex gap-1">
+                    <StarIcon
+                      className="text-yellow-400 h-5 w-5 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    4.5 ({course?.reviews.length})
                   </span>
                 </span>
                 <div className="flex mt-4 gap-2 flex-wrap">
@@ -145,7 +161,7 @@ export default function CoursePage() {
                     <ClockIcon className="h-6 w-6" /> 1h 30m
                   </span>
                   <div className="ml-auto">
-                    <LevelTag level={course?.level} />
+                    <LevelTag level={course?.level} customClass="px-0" />
                   </div>
                 </div>
               </section>
